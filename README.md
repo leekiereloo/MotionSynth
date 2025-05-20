@@ -133,22 +133,22 @@ Defines the detectable motion gestures:
 
 ### `MotionAxis` Enum
 Used with .twist gesture:
-- .x
-- .y
-- .z
+- `.x`
+- `.y`
+- `.z`
 
 ### `HapticEffect` Enum
 Defines the playable haptic effects:
-- .tap(intensity: Float, sharpness: Float)
-- .buzz(intensity: Float, sharpness: Float, duration: TimeInterval)
+- `.tap(intensity: Float, sharpness: Float)`
+- `.buzz(intensity: Float, sharpness: Float, duration: TimeInterval)`
 
 ### `MotionSynthError` Enum
 Possible errors thrown by MotionSynth:
-- .hapticsNotSupported
-- .engineNotPrepared
-- .engineCreationFailed(Error?)
-- .engineStartFailed(Error?)
-- .patternOrPlayerCreationFailed(Error?)
+- `.hapticsNotSupported`
+- `.engineNotPrepared`
+- `.engineCreationFailed(Error?)`
+- `.engineStartFailed(Error?)`
+- `.patternOrPlayerCreationFailed(Error?)`
   
 ## Background Operation
 By default, MotionSynth (like Core Motion and Core Haptics) will cease to function reliably when your app is backgrounded or the device is locked. This is due to iOS power-saving and resource management policies.
