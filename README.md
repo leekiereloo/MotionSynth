@@ -116,48 +116,48 @@ class MyViewController: UIViewController {
 
 Important: Haptic feedback will only work on physical iOS devices that support Core Haptics (generally iPhone 8 or later). It will not work on simulators.
 
-API Reference
-MotionSynth Class
-`init()`: Creates a new MotionSynth instance.
-mapGesture(_ gesture: MotionGesture, toHaptic haptic: HapticEffect): Maps a specific gesture to trigger a haptic effect.
-start() throws: Prepares and starts the motion detection and haptic engine. Throws MotionSynthError on failure (e.g., haptics not supported).
-stop(): Stops motion detection and releases haptic engine resources.
-isRunning: Bool (Read-only, example of a potential public property for state checking): Indicates if MotionSynth is currently active.
-MotionGesture Enum
+## API Reference
+### MotionSynth Class
+- `init()`: Creates a new MotionSynth instance.
+- `mapGesture(_ gesture: MotionGesture, toHaptic haptic: HapticEffect)`: Maps a specific gesture to trigger a haptic effect.
+- `start() throws`: Prepares and starts the motion detection and haptic engine. Throws MotionSynthError on failure (e.g., haptics not supported).
+- `stop()`: Stops motion detection and releases haptic engine resources.
+- `isRunning: Bool` (Read-only, example of a potential public property for state checking): Indicates if MotionSynth is currently active.
+
+### `MotionGesture` Enum
 Defines the detectable motion gestures:
+- `.shake(threshold: Double)`
+- `.twist(axis: MotionAxis, rateThreshold: Double)`
+- `.deviceTap(threshold: Double)`
+- `.flipOver`
 
-.shake(threshold: Double)
-.twist(axis: MotionAxis, rateThreshold: Double)
-.deviceTap(threshold: Double)
-.flipOver
-MotionAxis Enum
+### `MotionAxis` Enum
 Used with .twist gesture:
+- .x
+- .y
+- .z
 
-.x
-.y
-.z
-HapticEffect Enum
+### `HapticEffect` Enum
 Defines the playable haptic effects:
+- .tap(intensity: Float, sharpness: Float)
+- .buzz(intensity: Float, sharpness: Float, duration: TimeInterval)
 
-.tap(intensity: Float, sharpness: Float)
-.buzz(intensity: Float, sharpness: Float, duration: TimeInterval)
-MotionSynthError Enum
+### `MotionSynthError` Enum
 Possible errors thrown by MotionSynth:
-
-.hapticsNotSupported
-.engineNotPrepared
-.engineCreationFailed(Error?)
-.engineStartFailed(Error?)
-.patternOrPlayerCreationFailed(Error?)
-Background Operation
+- .hapticsNotSupported
+- .engineNotPrepared
+- .engineCreationFailed(Error?)
+- .engineStartFailed(Error?)
+- .patternOrPlayerCreationFailed(Error?)
+  
+## Background Operation
 By default, MotionSynth (like Core Motion and Core Haptics) will cease to function reliably when your app is backgrounded or the device is locked. This is due to iOS power-saving and resource management policies.
 
 If your application requires motion detection or haptics to operate in the background, you must:
-
-Configure the appropriate Background Modes capability in your app's target settings (e.g., "Location updates," "Audio").
-Provide a clear user-facing justification for this background activity, as per Apple's App Store Review Guidelines.
-Manage the MotionSynth lifecycle (start()/stop()) in your app's lifecycle methods (applicationDidBecomeActive, applicationWillResignActive, etc.) according to your background strategy.
-MotionSynth itself does not manage background execution permissions.
+- Configure the appropriate Background Modes capability in your app's target settings (e.g., "Location updates," "Audio").
+- Provide a clear user-facing justification for this background activity, as per Apple's App Store Review Guidelines.
+- Manage the MotionSynth lifecycle (start()/stop()) in your app's lifecycle methods (applicationDidBecomeActive, applicationWillResignActive, etc.) according to your background strategy.
+- MotionSynth itself does not manage background execution permissions.
 
 ## Future Enhancements (Roadmap Ideas)
 - Dynamic Parameter Mapping: Allow motion intensity (e.g., shake strength) to directly control haptic parameters (e.g., tap intensity) in real-time.
@@ -174,7 +174,6 @@ Contributions are welcome! If you have ideas for improvements, new gestures, or 
 3. Commit your changes (git commit -am 'Add some feature').
 4. Push to the branch (git push origin feature/your-feature-name).
 5. Open a new Pull Request.
-6. 
 Please ensure your code adheres to the existing style and includes tests where appropriate.
 
 ## License
